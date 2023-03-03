@@ -57,6 +57,9 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
+gem "dry-initializer"
+gem "httparty"
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
@@ -67,6 +70,7 @@ gem "dotenv-rails"
 
 group :development, :test do
   gem "factory_bot_rails"
+  gem "pry-rails"
   gem "rspec-expectations"
   gem "rspec-rails"
 end

@@ -6,3 +6,7 @@ require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
+
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 4
