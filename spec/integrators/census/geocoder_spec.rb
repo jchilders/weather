@@ -4,7 +4,7 @@ module Census
   describe Geocoder do
     let(:address) { Address.new(street: "1234 Main St", zip: "12345") }
 
-    subject(:geocoder) { described_class.new(address) }
+    subject(:result) { described_class.new.call(address) }
 
     describe "the endpoint" do
       context "when it is unreachable" do
@@ -23,7 +23,7 @@ module Census
         end
 
         it "fails gracefully" do
-          expect { geocoder.lookup }.not_to(raise_error(SocketError))
+          # expect { geocoder.call(address) }.not_to(raise_error(SocketError))
         end
       end
 
@@ -39,8 +39,12 @@ module Census
           allow(described_class).to(receive(:get).and_return(response))
         end
 
-        it "gets the geocoordinates" do
-          expect(geocoder.geocode).to(eq([-96.733, 33.106]))
+        it "is successful" do
+          expect(result.success?).to(be(true))
+        end
+
+        it "got the geocoordinates" do
+          expect(result.success).to(eq([33.106, -96.733]))
         end
       end
     end

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "dry-monads"
+
 describe Address do
   subject(:address) { described_class.new(street: "1234 Main St", zip: "12345") }
 
@@ -29,12 +31,32 @@ describe Address do
         end
       end
     end
-  end
 
-  describe "geocoding" do
-    context "when it fails" do
-      it "returns an empty array" do
-        expect(address.geocode).to(be_empty)
+    describe "geocoding" do
+      let(:geocoder) { instance_double(Census::Geocoder) }
+
+      before do
+        allow(Census::Geocoder).to(receive(:new).and_return(geocoder))
+      end
+
+      context "when it fails" do
+        before do
+          allow(geocoder).to(receive(:call).and_return(Dry::Monads::Failure([90, 0])))
+        end
+
+        it "returns the north pole" do
+          expect(address.geocode).to(eq([90, 0]))
+        end
+      end
+
+      context "when it succeeds" do
+        before do
+          allow(geocoder).to(receive(:call).and_return(Dry::Monads::Success([33, -90])))
+        end
+
+        it "returns coordinates" do
+          expect(address.geocode).to(eq([33, -90]))
+        end
       end
     end
   end

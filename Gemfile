@@ -58,6 +58,8 @@ group :development do
 end
 
 gem "dry-initializer"
+gem "dry-transaction"
+gem "dry-types"
 gem "httparty"
 
 group :test do

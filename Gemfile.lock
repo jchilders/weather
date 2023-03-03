@@ -96,7 +96,35 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    dry-core (1.0.0)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-events (1.0.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+    dry-inflector (1.0.0)
     dry-initializer (3.1.1)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-matcher (0.10.0)
+      dry-core (~> 1.0)
+    dry-monads (1.6.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-transaction (0.15.0)
+      dry-core (~> 1.0)
+      dry-events (~> 1.0)
+      dry-matcher (~> 0.10)
+      dry-monads (~> 1.6)
+    dry-types (1.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
     error_highlight (0.5.1)
     erubi (1.12.0)
     factory_bot (6.2.1)
@@ -306,6 +334,8 @@ DEPENDENCIES
   capybara
   dotenv-rails
   dry-initializer
+  dry-transaction
+  dry-types
   error_highlight (>= 0.4.0)
   factory_bot_rails
   httparty
