@@ -57,6 +57,7 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
+gem "dotenv-rails"
 gem "dry-initializer"
 gem "dry-transaction"
 gem "dry-types"
@@ -67,8 +68,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "vcr", "~> 6.1"
+  gem "webmock"
 end
-gem "dotenv-rails"
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -84,3 +86,4 @@ group :rubocop do
   gem "rubocop-rspec"
   gem "rubocop-shopify"
 end
+

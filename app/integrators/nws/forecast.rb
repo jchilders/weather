@@ -10,13 +10,11 @@ module Nws
   class Forecast
     include NwsBase
 
-    param(:gridId)
-    param(:gridX)
-    param(:gridY)
+    try :lookup, catch: SocketError
 
     # @return [Hash]
-    def call
-      resp = self.class.get("/gridpoints/#{gridid}/#{gridx},#{gridy}/forecast")
+    private def lookup(grid_id:, grid_x:, grid_y:)
+      resp = self.class.get("/gridpoints/#{grid_id}/#{grid_y},#{grid_y}/forecast")
       JSON.parse(resp.body)
     end
   end

@@ -8,7 +8,7 @@ class Address
   option(:street, optional: false, type: Dry::Types["strict.string"])
   option(:city, optional: true, type: Dry::Types["strict.string"])
   option(:state, optional: true, type: Dry::Types["strict.string"])
-  option(:zip, optional: false, type: Dry::Types["strict.string"])
+  option(:zip, optional: false, type: Dry::Types["coercible.integer"])
 
   # @return [Array] lat/long
   def geocode

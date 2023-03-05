@@ -1,0 +1,214 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.weather.gov/points/33.10672410269946,-96.73356067185759
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - "(test weather app, james.childers@gmail.com)"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 301
+      message: Moved Permanently
+    headers:
+      Server:
+      - nginx/1.20.1
+      Content-Type:
+      - application/problem+json
+      Location:
+      - "/points/33.1067,-96.7336"
+      X-Request-Id:
+      - e4c321bc-430a-4595-aca7-a632d1e09623
+      X-Correlation-Id:
+      - 112ef7f8
+      X-Server-Id:
+      - vm-lnx-nids-apiapp6.ncep.noaa.gov
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Correlation-Id, X-Request-Id, X-Server-Id
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '483'
+      Cache-Control:
+      - private, must-revalidate, max-age=57809
+      Expires:
+      - Sun, 05 Mar 2023 16:41:37 GMT
+      Date:
+      - Sun, 05 Mar 2023 00:38:08 GMT
+      Connection:
+      - keep-alive
+      X-Edge-Request-Id:
+      - b5b6e1b1
+      Vary:
+      - Accept,Feature-Flags,Accept-Language
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "correlationId": "112ef7f8",
+            "title": "Adjusting Precision Of Point Coordinate",
+            "type": "https://api.weather.gov/problems/AdjustPointPrecision",
+            "status": 301,
+            "detail": "The precision of latitude/longitude points is limited to 4 decimal digits for efficiency. The location attribute contains your request mapped to the nearest supported point. If your client supports it, you will be redirected.",
+            "instance": "https://api.weather.gov/requests/112ef7f8"
+        }
+  recorded_at: Sun, 05 Mar 2023 00:38:08 GMT
+- request:
+    method: get
+    uri: https://api.weather.gov/points/33.1067,-96.7336
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - "(test weather app, james.childers@gmail.com)"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.20.1
+      Content-Type:
+      - application/geo+json
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Correlation-Id, X-Request-Id, X-Server-Id
+      X-Request-Id:
+      - 3248233c-c1a6-4bd0-b4d1-8ce4902ce0be
+      X-Correlation-Id:
+      - c88da92
+      X-Server-Id:
+      - vm-lnx-nids-apiapp5.ncep.noaa.gov
+      Vary:
+      - Accept,Feature-Flags,Accept-Language
+      - Accept-Encoding
+      Cache-Control:
+      - public, max-age=57703, s-maxage=120
+      Expires:
+      - Sun, 05 Mar 2023 16:39:51 GMT
+      Date:
+      - Sun, 05 Mar 2023 00:38:08 GMT
+      Content-Length:
+      - '3108'
+      Connection:
+      - keep-alive
+      X-Edge-Request-Id:
+      - b5b6e2a6
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "@context": [
+                "https://geojson.org/geojson-ld/geojson-context.jsonld",
+                {
+                    "@version": "1.1",
+                    "wx": "https://api.weather.gov/ontology#",
+                    "s": "https://schema.org/",
+                    "geo": "http://www.opengis.net/ont/geosparql#",
+                    "unit": "http://codes.wmo.int/common/unit/",
+                    "@vocab": "https://api.weather.gov/ontology#",
+                    "geometry": {
+                        "@id": "s:GeoCoordinates",
+                        "@type": "geo:wktLiteral"
+                    },
+                    "city": "s:addressLocality",
+                    "state": "s:addressRegion",
+                    "distance": {
+                        "@id": "s:Distance",
+                        "@type": "s:QuantitativeValue"
+                    },
+                    "bearing": {
+                        "@type": "s:QuantitativeValue"
+                    },
+                    "value": {
+                        "@id": "s:value"
+                    },
+                    "unitCode": {
+                        "@id": "s:unitCode",
+                        "@type": "@id"
+                    },
+                    "forecastOffice": {
+                        "@type": "@id"
+                    },
+                    "forecastGridData": {
+                        "@type": "@id"
+                    },
+                    "publicZone": {
+                        "@type": "@id"
+                    },
+                    "county": {
+                        "@type": "@id"
+                    }
+                }
+            ],
+            "id": "https://api.weather.gov/points/33.1066999,-96.7336",
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -96.733599999999996,
+                    33.106699900000002
+                ]
+            },
+            "properties": {
+                "@id": "https://api.weather.gov/points/33.1066999,-96.7336",
+                "@type": "wx:Point",
+                "cwa": "FWD",
+                "forecastOffice": "https://api.weather.gov/offices/FWD",
+                "gridId": "FWD",
+                "gridX": 91,
+                "gridY": 117,
+                "forecast": "https://api.weather.gov/gridpoints/FWD/91,117/forecast",
+                "forecastHourly": "https://api.weather.gov/gridpoints/FWD/91,117/forecast/hourly",
+                "forecastGridData": "https://api.weather.gov/gridpoints/FWD/91,117",
+                "observationStations": "https://api.weather.gov/gridpoints/FWD/91,117/stations",
+                "relativeLocation": {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [
+                            -96.673032000000006,
+                            33.109735999999998
+                        ]
+                    },
+                    "properties": {
+                        "city": "Allen",
+                        "state": "TX",
+                        "distance": {
+                            "unitCode": "wmoUnit:m",
+                            "value": 5651.4863180318998
+                        },
+                        "bearing": {
+                            "unitCode": "wmoUnit:degree_(angle)",
+                            "value": 266
+                        }
+                    }
+                },
+                "forecastZone": "https://api.weather.gov/zones/forecast/TXZ104",
+                "county": "https://api.weather.gov/zones/county/TXC085",
+                "fireWeatherZone": "https://api.weather.gov/zones/fire/TXZ104",
+                "timeZone": "America/Chicago",
+                "radarStation": "KFWS"
+            }
+        }
+  recorded_at: Sun, 05 Mar 2023 00:38:08 GMT
+recorded_with: VCR 6.1.0
