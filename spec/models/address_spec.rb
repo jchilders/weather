@@ -9,37 +9,41 @@ describe Address do
   let(:zip) { "12345" }
 
   context "when initalizing" do
-    context "when required values aren't given" do
-      let(:street) { nil }
+    it "is valid" do
+      expect(address).to(be_valid)
+    end
 
+    context "when required values aren't given" do
       describe "street is not given" do
-        it "throws an error" do
-          expect { described_class.new(zip: "12345") }.to(raise_error("Address: option 'street' is required"))
+        let(:street) { nil }
+
+        it "is invalid" do
+          expect(address).not_to(be_valid)
         end
       end
 
       describe "zip is not given" do
-        it "throws an error" do
-          expect { described_class.new(street: "1234 Main St") }.to(raise_error("Address: option 'zip' is required"))
+        let(:zip) { nil }
+
+        it "is invalid" do
+          expect(address).not_to(be_valid)
         end
       end
     end
 
     context "when an invalid zip is given" do
-      it "throws an error" do
-        expect { described_class.new(street: "1234 Main St", zip: "alpha") }.to(raise_error(Dry::Types::CoercionError))
+      let(:zip) { "alpha" }
+
+      it "is invalid" do
+        expect(address).not_to(be_valid)
       end
     end
 
-    context "when values that aren't required aren't provided" do
-      describe "they should be nil" do
-        it "city should be nil" do
-          expect(address.city).to(be_nil)
-        end
+    context "when a nine-digit zip is given" do
+      let(:zip) { "12345-6789" }
 
-        it "state should be nil" do
-          expect(address.state).to(be_nil)
-        end
+      it "is valid" do
+        expect(address).to(be_valid)
       end
     end
   end

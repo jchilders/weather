@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://geocoding.geo.census.gov/geocoder/locations/address?benchmark=2020&city=&format=json&state=&street=451%20N.%208th%20St.&zip=47807
+    uri: https://geocoding.geo.census.gov/geocoder/locations/address?benchmark=2020&city=&created_at=&format=json&id=&state=&street=451%20N.%208th%20St.&updated_at=&zip=47807
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       message: ''
     headers:
       Date:
-      - Sat, 04 Mar 2023 19:40:30 GMT
+      - Sun, 05 Mar 2023 21:41:35 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -41,7 +41,7 @@ http_interactions:
       Vary:
       - Origin
       Set-Cookie:
-      - TS0193e6a1=01283c52a4b4d36edc53b56502b1c03b11b6761839d444ab0a8d3fbb01604c06f7c64add0d9d625981eac1a024e10f4b012bf8979f;
+      - TS0193e6a1=01283c52a4b254d1de7fc4836e8530e97d2d2eb3945fe09d652e69703bcd8e030b7bbc6cb81d54d3930e0c7f80ca1d628f97dd9cb8;
         Path=/; Domain=.geocoding.geo.census.gov
     body:
       encoding: UTF-8
@@ -50,5 +50,5 @@ http_interactions:
         Address Ranges - Census 2020 Benchmark","id":"2020","benchmarkName":"Public_AR_Census2020"}},"addressMatches":[{"tigerLine":{"side":"R","tigerLineId":"606508091"},"coordinates":{"x":-87.40576720252876,"y":39.4713935121389},"addressComponents":{"zip":"47807","streetName":"8TH","preType":"","city":"TERRE
         HAUTE","preDirection":"N","suffixDirection":"","fromAddress":"401","state":"IN","suffixType":"ST","toAddress":"499","suffixQualifier":"","preQualifier":""},"matchedAddress":"451
         N 8TH ST, TERRE HAUTE, IN, 47807"}]}}'
-  recorded_at: Sat, 04 Mar 2023 19:40:30 GMT
+  recorded_at: Sun, 05 Mar 2023 21:41:35 GMT
 recorded_with: VCR 6.1.0
