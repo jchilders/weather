@@ -23,16 +23,17 @@ module Census
     try :parse, catch: JSON::JSONError
     step :geocode
 
-    # Ex:
+    # Call the Census Bureau API endpoint with the given `address`
     #
-    # https://geocoding.geo.census.gov/geocoder/locations/address?street=4600+Silver+Hill+Rd&city=%20Washington&state=DC&zip=20233&benchmark=Public_AR_Census2020&format=json
+    # @param [Address]
     #
-    # @return [Result[Hash]] On success
-    # @return [Result[SocketError]] On network failure
+    # @return [Success(HTTParty::Response)] On success
+    # @return [Failure(SocketError)] On network failure
     private def lookup(address)
       self.class.get("/address", query: address.as_json)
     end
 
+    # @param [HTTParty::Response]
     private def parse(response)
       JSON.parse(response.body)
     end
