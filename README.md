@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation
 
-Things you may want to cover:
+```
+brew install postgresql@14
+brew services start postgresql
+bundle install
+```
 
-* Ruby version
+# Running
 
-* System dependencies
+```
+bin/dev
+```
 
-* Configuration
+After starting the application will be available at [http://localhost:3000](http://localhost:3000).
 
-* Database creation
+# Enabling caching
 
-* Database initialization
+```
+bin/rails dev:cache
+```
 
-* How to run the test suite
+# Running tests
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rspec
+```
