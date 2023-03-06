@@ -11,11 +11,29 @@ module Nws
     include NwsBase
 
     try :lookup, catch: SocketError
+    step :response_ok?
+    try :parse, catch: JSON::JSONError
+    map :forecast
+
+    default_params units: "us" # only works on this endpoint, apparently
 
     # @return [Hash]
-    private def lookup(grid_id:, grid_x:, grid_y:)
-      resp = self.class.get("/gridpoints/#{grid_id}/#{grid_y},#{grid_y}/forecast")
-      JSON.parse(resp.body)
+    private def lookup(grid_id:, grid_x:, grid_y:, **)
+      self.class.get("/gridpoints/#{grid_id}/#{grid_y},#{grid_y}/forecast")
+    end
+
+    private def response_ok?(response)
+      response.ok? ? Success(response) : Failure(response)
+    end
+
+    private def parse(response)
+      JSON.parse(response.body).deep_symbolize_keys!
+    end
+
+    # @return [Result[Array[Hash]]]
+    private def forecast(json)
+      props = json[:properties]
+      props[:periods]
     end
   end
 end

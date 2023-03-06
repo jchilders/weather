@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.weather.gov/gridpoints/FWD/91,117
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - "(test weather app, james.childers@gmail.com)"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Server:
+      - nginx/1.20.1
+      Content-Type:
+      - application/problem+json
+      X-Request-Id:
+      - d55fe6de-1844-47c4-8ba5-ab253e9242ef
+      X-Correlation-Id:
+      - dc3e9e0
+      X-Server-Id:
+      - vm-lnx-nids-apiapp2.ncep.noaa.gov
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - X-Correlation-Id, X-Request-Id, X-Server-Id
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '336'
+      Cache-Control:
+      - private, must-revalidate, max-age=3600
+      Expires:
+      - Mon, 06 Mar 2023 13:20:28 GMT
+      Date:
+      - Mon, 06 Mar 2023 12:20:28 GMT
+      Connection:
+      - keep-alive
+      X-Edge-Request-Id:
+      - '55453193'
+      Vary:
+      - Accept,Feature-Flags,Accept-Language
+      Strict-Transport-Security:
+      - max-age=31536000 ; includeSubDomains ; preload
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "correlationId": "dc3e9e0",
+          "title": "Unexpected Problem",
+          "type": "https://api.weather.gov/problems/UnexpectedProblem",
+          "status": 500,
+          "detail": "An unexpected problem has occurred. If this error continues, please contact support at nco.ops@noaa.gov.",
+          "instance": "https://api.weather.gov/requests/dc3e9e0"
+        }
+  recorded_at: Mon, 06 Mar 2023 12:20:28 GMT
+recorded_with: VCR 6.1.0

@@ -1,0 +1,19 @@
+<div id="<%= dom_id address %>">
+  <p class="my-5">
+    <strong class="font-medium mb-1">Street:</strong>
+    <%= address.street %>
+  </p>
+
+  <p class="my-5">
+    <strong class="font-medium mb-1">Zip:</strong>
+    <%= address.zip %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this address", address, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this address', edit_address_path(address), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <p>Path: <%= forecast_path(address.zip, street: address.street) %></p>
+    <%= link_to "Forecast", forecast_path(address.zip, street: address.street), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require "dry-monads"
-
-describe Address do
+describe Address, type: :model do
   subject(:address) { described_class.new(street: street, zip: zip) }
 
   let(:street) { "1234 Main St" }

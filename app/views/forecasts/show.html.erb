@@ -1,0 +1,34 @@
+<div class="rounded-lg p-4 text-white bg-gradient-to-b from-blue-500 to-blue-300 mb-10">
+  <div class="flow-root">   
+    <div class="float-left">
+      <p class="tx-sm"><%= @forecast.city %> (<%= @forecast.zip %>)</p>
+      <p class="text-4xl"><%= @forecast.temperature_current %>&deg;</p>
+    </div>
+    <div class="float-right">
+      <p class="tx-sm">H:<%=@forecast.temperature_low %>&deg; L:<%= @forecast.temperature_high %>&deg;</p>
+      <p class="tx-sm">
+        <% if @in_cache %>
+          cached
+        <% else %>
+          not cached
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Forecast</h1>
+
+<% @forecast.forecasts.each do |f| %>
+  <div class="bg-gray-100 rounded-lg border-2 border-black p-4 w-full shadow-lg text-black mb-5">
+    <div class="grid grid-flow-col gap-3">
+      <div class="col-span-1">
+        <img src="<%= f["icon"] %>">
+      </div>
+      <div class="col-span-3">
+        <div class="text-2xl"><%= f["name"] %></div>
+        <div class=""><%= f["detailedForecast"] %></div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -12,7 +12,8 @@ module Nws
     include NwsBase
 
     try :lookup, catch: SocketError
-    try :to_grid, catch: JSON::JSONError
+    try :parse, catch: JSON::JSONError
+    map :to_grid
 
     # https://api.weather.gov/points/{latitude},{longitude}
     #
@@ -21,16 +22,21 @@ module Nws
       self.class.get("/points/#{latitude},#{longitude}")
     end
 
+    private def parse(response)
+      JSON.parse(response.body).deep_symbolize_keys!
+    end
+
     # @param [HTTParty::Response]
     #
     # @return [Success(Hash)] {gridId: <String>, gridX: <Integer>, gridY: <Integer>}
-    private def to_grid(response)
-      json = JSON.parse(response.body)
-      properties = json["properties"]
+    private def to_grid(json)
+      properties = json[:properties]
       {
-        grid_id: properties["gridId"],
-        grid_x: properties["gridX"],
-        grid_y: properties["gridY"],
+        grid_id: properties[:gridId],
+        grid_x: properties[:gridX],
+        grid_y: properties[:gridY],
+        city: properties[:relativeLocation][:properties][:city],
+        state: properties[:relativeLocation][:properties][:state],
       }
     end
   end

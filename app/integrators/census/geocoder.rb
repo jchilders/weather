@@ -30,7 +30,8 @@ module Census
     # @return [Success(HTTParty::Response)] On success
     # @return [Failure(SocketError)] On network failure
     private def lookup(address)
-      self.class.get("/address", query: address.as_json)
+      params = { street: address.street, zip: address.zip }
+      self.class.get("/address", query: params.as_json)
     end
 
     # @param [HTTParty::Response]

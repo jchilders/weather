@@ -33,6 +33,8 @@ module Nws
             grid_id: "FWD",
             grid_x: 91,
             grid_y: 117,
+            city: "Allen",
+            state: "TX",
           }))
         end
       end

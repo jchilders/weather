@@ -6,6 +6,8 @@ module ExternalApi
       base.class_eval do
         include(Dry::Transaction)
         include(HTTParty)
+
+        debug_output($stdout) if Rails.env.local?
       end
     end
   end
