@@ -12,7 +12,6 @@ module Census
   #
   # @see https://geocoding.geo.census.gov/geocoder/Geocoding_Services_API.pdf
   class Geocoder
-    include Dry::Transaction
     include ExternalApi
 
     base_uri "https://geocoding.geo.census.gov/geocoder/locations"
