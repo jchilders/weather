@@ -12,6 +12,7 @@ module Nws
     include NwsBase
 
     try :lookup, catch: SocketError
+    step :response_ok?
     try :parse, catch: JSON::JSONError
     map :to_grid
 
@@ -20,6 +21,10 @@ module Nws
     # @return [json] Raw JSON response from endpoint
     private def lookup(latitude:, longitude:)
       self.class.get("/points/#{latitude},#{longitude}")
+    end
+
+    private def response_ok?(response)
+      response.ok? ? Success(response) : Failure(response)
     end
 
     private def parse(response)
