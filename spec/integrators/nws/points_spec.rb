@@ -28,6 +28,7 @@ module Nws
           expect(result.success?).to(be(true))
         end
 
+        # rubocop:disable  RSpec/ExampleLength
         it "got the grid data" do
           expect(result.success).to(eq({
             grid_id: "FWD",
@@ -37,6 +38,7 @@ module Nws
             state: "TX",
           }))
         end
+        # rubocop:enable  RSpec/ExampleLength
       end
     end
   end

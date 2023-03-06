@@ -7,7 +7,7 @@ module ExternalApi
         include(Dry::Transaction)
         include(HTTParty)
 
-        debug_output($stdout) if Rails.env.local?
+        # debug_output($stdout) if Rails.env.local?
       end
     end
   end

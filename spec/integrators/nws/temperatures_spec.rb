@@ -23,7 +23,7 @@ module Nws
         end
       end
 
-      context "returns a 500 Server Error" do
+      context "when it returns a 500 Server Error" do
         subject(:result) do
           VCR.use_cassette("nws/temperatures_server_err") do
             described_class.new.call(grid)

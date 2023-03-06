@@ -27,6 +27,6 @@ class Forecast < ApplicationRecord
 
   # @return [Array[Hash]]
   def forecasts
-    response["forecast"]
+    @forecasts ||= response["forecast"].any? ? response["forecast"] : []
   end
 end
