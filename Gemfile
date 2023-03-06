@@ -89,3 +89,5 @@ group :rubocop do
   gem "rubocop-rspec"
   gem "rubocop-shopify"
 end
+
+gem "dockerfile-rails", "~> 1.2"
