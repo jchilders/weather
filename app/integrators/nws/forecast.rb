@@ -11,7 +11,7 @@ module Nws
     include NwsBase
 
     try :lookup, catch: SocketError
-    step :response_ok?
+    check :response_ok?
     try :parse, catch: JSON::JSONError
     map :forecast
 
@@ -20,14 +20,6 @@ module Nws
     # @return [Hash]
     private def lookup(grid_id:, grid_x:, grid_y:, **)
       self.class.get("/gridpoints/#{grid_id}/#{grid_y},#{grid_y}/forecast")
-    end
-
-    private def response_ok?(response)
-      response.ok? ? Success(response) : Failure(response)
-    end
-
-    private def parse(response)
-      JSON.parse(response.body).deep_symbolize_keys!
     end
 
     # @return [Result[Array[Hash]]]

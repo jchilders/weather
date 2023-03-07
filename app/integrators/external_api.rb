@@ -8,6 +8,10 @@ module ExternalApi
         include(HTTParty)
 
         # debug_output($stdout) if Rails.env.local?
+
+        private def response_ok?(response)
+          response.ok?
+        end
       end
     end
   end

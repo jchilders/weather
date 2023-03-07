@@ -19,6 +19,7 @@ module Census
     headers "Content-Type": "application/json"
 
     try :lookup, catch: SocketError
+    check :response_ok?
     try :parse, catch: JSON::JSONError
     step :geocode
 
