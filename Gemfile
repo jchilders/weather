@@ -91,3 +91,5 @@ group :rubocop do
 end
 
 gem "dockerfile-rails", "~> 1.2"
+
+gem 'auth', path: 'engines/auth'
