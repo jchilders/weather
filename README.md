@@ -44,6 +44,27 @@ Uses [Shopify's Style Guide](https://ruby-style-guide.shopify.dev/) as the basis
 rubocop
 ```
 
+## Engines
+
+Various Rails engines live under the `engines/` directory. Some commonly used commands needed when working with these are given below.
+
+### Running migrations in an Engine in the main app
+
+All migrations for all Engines:
+
+```
+# Copy the migrations from engines to the main app
+> rails railties:install:migrations
+# Run them
+> rails db:migrate
+```
+
+To copy the migrations for the `auth` engine into the main app:
+
+```
+rails auth:install:migrations
+```
+
 ## Service Objects
 
 The API calls are done using [HTTParty](https://github.com/jnunemaker/httparty) and [dry-transaction](https://dry-rb.org/gems/dry-transaction). HTTParty provides helpers for making the HTTP calls, while dry-transaction provides a framework for doing [railway oriented programming](https://www.youtube.com/watch?v=YXiqzHMmv_o).

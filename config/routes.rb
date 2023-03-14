@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   root "addresses#new"
   get "forecasts/:zip", to: "forecasts#show", as: "forecast"
+
+  mount Auth::Engine, at: "/auth"
 end
